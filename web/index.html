@@ -1,18 +1,14 @@
 <html>
 	<head>
+		<meta charset="UTF-8">
 		<link rel="stylesheet" type="text/css" href="style.css">
+		<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 	</head>
 	<body>
-		<h1 class="title">Try ringing</h1>
-		<?php
-			/* open the txt file */
-			//$handle = fopen("status.txt", "w");
-
-			/* Write the status of the heater in the txt file */
-			//fwrite($handle, "on");
-
-			/* close the txt file */
-			//fclose($handle);
-		?>
+		<div>
+			<img class="width-100 icon" src="doorbell.svg" />
+			<h1 class="hidden title">...Ringing...</h1>
+		</div>
+		<script src="script.js"></script>
 	</body>
 </html>
