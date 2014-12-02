@@ -3,7 +3,6 @@
 		<link rel="stylesheet" type="text/css" href="style.css">
 	</head>
 	<body>
-		<h1 class="title">Try ringing</h1>
 		<?php
 			/* open the txt file */
 			//$handle = fopen("status.txt", "w");

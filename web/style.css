@@ -1,0 +1,16 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto+Slab:700);
+
+body {
+	background-color: #535F64;
+	height:100vh;
+	font-family: 'Roboto Slab', serif;
+	color: #fffff1;
+	font-size: 16px;
+}
+
+.h1 {
+	text-align: center;
+	text-transform: uppercase;
+	width: 100%;
+	font-size: 3em; 
+}
