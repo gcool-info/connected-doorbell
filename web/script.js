@@ -15,7 +15,7 @@ $('.icon').click(function() {
 		data: {
 			"status": 'on'
 		}
-	}
+	});
 
 	setTimeout(function(){
 		$('.title').hide(1000);
@@ -30,7 +30,7 @@ $('.icon').click(function() {
 			data: {
 				"status": 'off'
 			}
-		}
+		});
 
-	}, 10000);
+	}, 15000);
 })
