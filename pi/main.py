@@ -1,9 +1,10 @@
-import urllib2, time, pygame
+import urllib2, time, pygame, os, sys
 
 pygame.mixer.init()
 pygame.mixer.music.load("audio.mp3")
 
 #check if internet is running
+connection_attempts = 0
 def internet_on():
 	try:
 		response = urllib2.urlopen("http://74.125.228.100", timeout=1)
@@ -12,7 +13,13 @@ def internet_on():
 	return False
 
 while not internet_on():
-	print "Internet is down. Re-trying in 60"
+
+	global connection_attempts
+	if connection_attempts > 2:
+		os.system("sudo ifup --force wlan0")
+		
+	connection_attempts = connection_attempts + 1
+	print "Internet is down. Re-trying in 60s"
 	time.sleep(60)
 
 print "Wi-Fi is on!"
