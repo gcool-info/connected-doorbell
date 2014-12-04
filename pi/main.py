@@ -4,6 +4,8 @@ import urllib2, time, pygame, os, sys
 # Set up sound
 pygame.mixer.init()
 pygame.mixer.music.load("audio.mp3")
+pygame.mixer.music.set_volume(1)
+#os.system("amixer set PCM -- 100%")
 
 # Check how many times we have tried to connect to the internet
 connection_attempts = 0
