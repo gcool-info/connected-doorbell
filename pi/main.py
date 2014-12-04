@@ -44,6 +44,10 @@ connection_attempts = 0
 while True:
 	response = http_request("http://icah.org.uk/opensesame/status.txt")
 
+	# If we've been trying to connect for a long time (2 mins), reboot
+	if connection_attempts > 120:
+		os.system("sudo reboot")
+
 	if response=="on":
 		# Play the sound
 		pygame.mixer.music.play()
@@ -55,6 +59,13 @@ while True:
 
 		# Update the web / turn off the alarm
 		http_request("http://icah.org.uk/opensesame/ajax.php?cmd=turn_off")
+
+		# Reset the connection attemps counter
+		connection_attempts = 0
 		
+	else:
+		# Update the connection attempts counter
+		connection_attempts = connection_attempts + 1
+
 	time.sleep(1)
 
