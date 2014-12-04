@@ -1,6 +1,6 @@
 <?php
 
-	$command = $_GET["cmd"];
+	$command = (isset($_GET["cmd"])? $_GET["cmd"] : $_POST["cmd"]);
 
 	switch ($command) {
 		case 'turn_on':

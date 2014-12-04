@@ -1,4 +1,20 @@
 $( document ).ready(function() {
+	/* Start by setting off the alarm */
+	$.ajax({
+		url: 'ajax.php',
+		type: 'POST',
+		data: {
+			"cmd": 'turn_on'
+		},
+		success: function() {
+			$('.title').show(1000);
+			$('.icon').css('opacity', 0.2);
+			$('.icon').addClass('disabled');
+		}
+	});
+	
+
+	/* Set-off the alarm on click */
 	$('.icon').click(function() {
 
 		if ($('.icon').hasClass('disabled'))
@@ -10,22 +26,27 @@ $( document ).ready(function() {
 
 		$.ajax({
 			url: 'ajax.php',
-			type: 'GET',
-			dataType: "json",
-			timeout: 10000,
+			type: 'POST',
 			data: {
 				"cmd": 'turn_on'
+			},
+			success: function() {
+				$('.title').show(1000);
+				$('.icon').css('opacity', 0.2);
+				$('.icon').addClass('disabled');
 			}
 		});
 	});
 
+
+	/* Check the alarm state every 10s */
 	setInterval(function(){
 
+		
 			$.ajax({
 				url: 'ajax.php',
-				type: 'GET',
+				type: 'POST',
 				dataType: "json",
-				timeout: 10000,
 				data: {
 					"cmd": 'read'
 				},
@@ -42,5 +63,5 @@ $( document ).ready(function() {
 				},
 			});
 
-		}, 1000);
+	}, 10000);
 })
