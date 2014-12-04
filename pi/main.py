@@ -56,5 +56,5 @@ while True:
 		# Update the web / turn off the alarm
 		http_request("http://icah.org.uk/opensesame/ajax.php?cmd=turn_off")
 		
-	time.sleep(5)
+	time.sleep(1)
 
