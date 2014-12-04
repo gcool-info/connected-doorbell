@@ -31,3 +31,7 @@ h1 {
 .hidden {
 	display: none;
 }
+
+.timer {
+	opacity: 0.7;
+}

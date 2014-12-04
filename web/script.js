@@ -1,4 +1,6 @@
 $( document ).ready(function() {
+	timer = 120;
+
 	/* Start by setting off the alarm */
 	$.ajax({
 		url: 'ajax.php',
@@ -16,6 +18,9 @@ $( document ).ready(function() {
 
 	/* Set-off the alarm on click */
 	$('.icon').click(function() {
+
+		/* Set the timer */
+		timer = 120;
 
 		if ($('.icon').hasClass('disabled'))
 			return;
@@ -41,7 +46,6 @@ $( document ).ready(function() {
 
 	/* Check the alarm state every 10s */
 	setInterval(function(){
-
 		
 			$.ajax({
 				url: 'ajax.php',
@@ -62,6 +66,17 @@ $( document ).ready(function() {
 					}	
 				},
 			});
+
+			/* Update the visual timer */
+			timer -= 5;
+
+			console.log(timer);
+
+			if (timer >= 0)
+				$('.seconds').html(timer);
+			else
+				$('.timer').html("Technology can be a bitch!<br/>Try knocking on the door...!")
+
 
 	}, 10000);
 })
