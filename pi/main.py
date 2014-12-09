@@ -15,8 +15,8 @@ def http_request(url):
 	try:
 		response = urllib2.urlopen(url)
 		return response.read()
-	except urllib2.URLError as err: pass
-	return False
+	except Exception:
+		return False
 
 # Check if the internet / wifi is working by connecting to a google server
 while not http_request("http://74.125.228.100"):
@@ -24,15 +24,18 @@ while not http_request("http://74.125.228.100"):
 	global connection_attempts
 
 	# Restart the wifi after two attempts
-	if connection_attempts > 2:
+	if connection_attempts > 2 and connection_attempts < 5:
 		os.system("sudo ifup --force wlan0")
+	elif connection_attempts >= 5:
+		# Something is really wrong, we need to reboot
+		ios.system("sudo reboot")
 		
 	# Increment the connection attempts
 	connection_attempts = connection_attempts + 1
 
 	# Print status message
 	print "Internet is down. Re-trying in 60s"
-	time.sleep(60)
+	time.sleep(120)
 
 print "Wi-Fi is on!"
 
@@ -63,7 +66,7 @@ while True:
 		# Reset the connection attemps counter
 		connection_attempts = 0
 		
-	else:
+	elif response==False:
 		# Update the connection attempts counter
 		connection_attempts = connection_attempts + 1
 
